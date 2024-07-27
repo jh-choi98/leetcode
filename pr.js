@@ -1,48 +1,22 @@
-class Solution {
-  getMax(arr) {
-    let max = arr[0];
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i] > max) {
-        max = arr[i];
-      }
-    }
-    return max;
+function quickSort(arr, left = 0, right = arr.length - 1) {
+  if (left < right) {
+    const pivotIndex = partition(arr, left, right);
+
+    quickSort(arr, left, pivotIndex - 1);
+    quickSort(arr, pivotIndex + 1, right);
   }
 
-  countSort(arr, exp) {
-    const output = new Array(arr.length);
-    const count = new Array(10).fill(0);
+  return arr;
+}
 
-    for (let i = 0; i < arr.length; i++) {
-      count[Math.floor(arr[i] / exp) % 10]++;
-    }
+function partition(arr, left, right) {
+  const pivot = arr[right];
+  let i = left - 1;
 
-    for (let i = 1; i < 10; i++) {
-      count[i] += count[i - 1];
+  for (let j = left; j < right; j++) {
+    if (arr[j] < pivot) {
+      i++;
+      [arr[i], arr[j]] = [arr[j], arr[i]];
     }
-
-    for (let i = arr.length; i >= 0; i--) {
-      output[count[Math.floor(arr[i] / exp) % 10] - 1] = arr[i];
-      count[Math.floor(arr[i] / exp) % 10]--;
-    }
-
-    for (let i = 0; i < arr.length; i++) {
-      arr[i] = output[i];
-    }
-  }
-
-  radixSort(arr) {
-    const max = this.getMax(arr);
-    for (let exp = 1; Math.floor[max / exp] > 0; exp *= 10) {
-      this.countSort(arr, exp);
-    }
-  }
-
-  sortedSquares(nums) {
-    for (let i = 0; i < nums.length; i++) {
-      nums[i] *= nums[i];
-    }
-    this.radixSort(nums);
-    return nums;
   }
 }
