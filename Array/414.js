@@ -106,10 +106,7 @@ var thirdMax3 = function (nums) {
     if (minHeap.getSize() === 3) {
       if (minHeap.getMin() < nums[i]) {
         taken.delete(minHeap.extractMin());
-        minHeap.insert(nums[i]);
-        taken.add(nums[i]);
       }
-    } else {
       minHeap.insert(nums[i]);
       taken.add(nums[i]);
     }
@@ -123,13 +120,105 @@ var thirdMax3 = function (nums) {
 };
 // Solution4
 // using Ordered Set
+// T: O(n)
+// S: O(1)
+var thirdMax4 = function (nums) {
+  let numsSet = new Set();
+
+  for (let num of nums) {
+    if (numsSet.has(num)) {
+      continue;
+    }
+
+    if (numsSet.size === 3) {
+      // Destructing assignment(비구조화 할당): 배열이나 객체의 속성을 분해하여
+      // 개별 변수에 할당할 수 있게 해주는 문법
+      let [firstElement] = numsSet;
+      if (firstElement < num) {
+        numsSet.delete(firstElement);
+        numsSet.add(num);
+      }
+    } else {
+      numsSet.add(num);
+    }
+
+    // Set은 정렬 메소드를 제공하지 않기 때문에 Set을 배열로 변환하여 정렬한 후 다시
+    // Set으로 만들기
+    numsSet = new Set([...numsSet].sort((a, b) => a - b));
+  }
+
+  if (numsSet.size === 3) {
+    let [firstElement] = numsSet;
+    return firstElement;
+  }
+
+  let lastElement = [...numsSet].pop();
+  return lastElement;
+};
 
 // Solution5
 // using 3 Pointer
+// T: O(n)
+// S: O(1)
+var thirdMax5 = function (nums) {
+  let firstMax = Number.MIN_SAFE_INTEGER;
+  let secondMax = Number.MIN_SAFE_INTEGER;
+  let thirdMax = Number.MIN_SAFE_INTEGER;
+
+  for (let num of nums) {
+    if (firstMax === num || secondMax === num || thirdMax === num) {
+      continue;
+    }
+
+    if (firstMax <= num) {
+      [thirdMax, secondMax, firstMax] = [secondMax, firstMax, num];
+    } else if (secondMax <= num) {
+      [thirdMax, secondMax] = [secondMax, num];
+    } else if (thirdMax <= num) {
+      thirdMax = num;
+    }
+  }
+
+  if (thirdMax === Number.MIN_SAFE_INTEGER) {
+    return firstMax;
+  }
+  return thirdMax;
+};
 
 // Solution6
-// using 3 Pointer2
+// using 3 Pointer2 + pair
+var thirdMax6 = function (nums) {
+  let firstMax = [-1, false];
+  let secondMax = [-1, false];
+  let thirdMax = [-1, false];
+
+  for (let num of nums) {
+    if (
+      (firstMax[1] && firstMax[0] === num) ||
+      (secondMax[1] && secondMax[0] === num) ||
+      (thirdMax[1] && thirdMax[0] === num)
+    ) {
+      continue;
+    }
+
+    if (!firstMax[1] || firstMax[0] < num) {
+      thirdMax = secondMax;
+      secondMax = firstMax;
+      firstMax = [num, true];
+    } else if (!secondMax[1] || secondMax[0] < num) {
+      thirdMax = secondMax;
+      secondMax = [num, true];
+    } else if (!thirdMax[1] || thirdMax[0] < num) {
+      thirdMax = [num, true];
+    }
+  }
+
+  if (!thirdMax[1]) {
+    return firstMax[0];
+  }
+  return thirdMax[0];
+};
 
 let nums = [3, 2, 1];
 
-console.log(thirdMax3(nums));
+console.log(thirdMax4(nums));
