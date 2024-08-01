@@ -28,7 +28,7 @@ class SinglyLinkedList:
         self.length += 1
 
     def add_at_index(self, data, index):
-        if index < 0 or index >= self.length:
+        if index < 0 or index > self.length:
             raise IndexError("Invalid Index")
 
         new_node = Node(data)
