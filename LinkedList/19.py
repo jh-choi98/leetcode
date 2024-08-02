@@ -6,7 +6,7 @@ class ListNode:
         self.next = next
 
 
-# Use Length
+# Use Length - Two passes
 # T: O(n)
 # S: O(1)
 class Solution:
@@ -36,4 +36,29 @@ class Solution:
             count += 1
 
         prev.next = cur.next
+        return head
+
+
+# One pass - Keeping certain distance
+class Solution2:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int):
+        if not head.next:
+            return None
+
+        left = head
+        right = head
+        for i in range(n):
+            right = right.next
+
+        prev = None
+        while right:
+            prev = left
+            left = left.next
+            right = right.next
+
+        if not prev:
+            head = head.next
+            return head
+
+        prev.next = left.next
         return head
