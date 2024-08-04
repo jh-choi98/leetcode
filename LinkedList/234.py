@@ -29,5 +29,21 @@ class Solution:
         return True
 
 
-# class Solution2:
+# Create List and Use Two pointers approach
+# T: O(n)
+# S: O(n)
+class Solution2:
+    def isPalindrome(self, head: Optional[ListNode]):
+        if not head or not head.next:
+            return True
+
+        lArr = []
+        cur = head
+        while cur:
+            lArr.append(cur.val)
+            cur = cur.next
+        return lArr == lArr[::-1]
+
+
+# class Solution3:
 #     def isPalindrome(self, head: Optional[ListNode]):
