@@ -16,11 +16,9 @@ class Solution:
 
         lArr = []
         cur = head
-        i = 0
         while cur:
             lArr.append(cur.val)
             cur = cur.next
-            i += 1
 
         length = len(lArr)
 
