@@ -90,12 +90,8 @@ class DoublyLinkedList:
         if index < 0 or index >= self.length:
             raise IndexError("Invalid Index")
 
-        if index == 0:
+        if index == 0 or index == self.length - 1:
             self.remove_first()
-            return
-
-        if index == self.length - 1:
-            self.remove_last()
             return
 
         cur = self.head
