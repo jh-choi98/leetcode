@@ -115,7 +115,7 @@ class Solution3:
         result = True
         first_position = head
         second_position = second_half_start
-        while result and second_half_start:
+        while result and second_position:
             if first_position.val != second_position.val:
                 result = False
             first_position = first_position.next
