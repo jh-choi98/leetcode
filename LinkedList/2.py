@@ -26,18 +26,18 @@ class Solution:
             num2 = num2 + exp * cur2.val
             cur2 = cur2.next
             exp *= 10
-        sum = num1 + num2
+        sum_val = num1 + num2
 
-        if sum == 0:
+        if sum_val == 0:
             new_node = ListNode(0)
             return new_node
 
         prehead = ListNode(-1)
         cur = prehead
-        while sum > 0:
-            new_node = ListNode(sum % 10)
+        while sum_val > 0:
+            new_node = ListNode(sum_val % 10)
             cur.next = new_node
             cur = cur.next
-            sum = sum // 10
+            sum_val = sum_val // 10
 
         return prehead.next
