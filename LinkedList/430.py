@@ -59,3 +59,34 @@ class Solution:
         # With the tail element of the previous sublist, we then flatten
         # the right subtree
         return self.flatten_dfs(tail, tempNext)
+
+
+# Iteration
+# T: O(n)
+# S: O(n)
+class Solution2:
+    def flatten(self, head: "Optional[Node]"):
+        if not head:
+            return
+
+        prehead = Node(None, None, head, None)
+        prev = prehead
+
+        stack = []
+        stack.append(head)
+
+        while stack:
+            cur = stack.pop()
+            prev.next = cur
+            cur.prev = prev
+
+            if cur.next:
+                stack.append(cur.next)
+            if cur.child:
+                stack.append(cur.child)
+                cur.child = None
+
+            prev = cur
+
+        prehead.next.prev = None
+        return prehead.next
