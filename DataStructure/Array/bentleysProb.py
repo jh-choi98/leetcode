@@ -21,6 +21,7 @@ class Solution:
 
 
 # Divide and Conquer
+# T: O(nlogn)
 class Solution2:
     def find_max_sum(self, arr):
         n = len(arr)
