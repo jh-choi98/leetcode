@@ -1,9 +1,9 @@
-function generate(numRows: number): number[][] {
+function generate2(numRows: number): number[][] {
   if (numRows === 1) {
     return [[1]];
   }
 
-  const triangle: number[][] = generate(numRows - 1);
+  const triangle: number[][] = generate2(numRows - 1);
   const prevRow: number[] = triangle[triangle.length - 1];
   const curRow: number[] = [1];
 
