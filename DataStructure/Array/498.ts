@@ -57,7 +57,7 @@ function findDiagonalOrder2(mat: number[][]): number[] {
   const ans: number[] = [];
 
   Object.keys(d).forEach((key) => {
-    const numKey = parseInt(key);
+    const numKey = parseInt(key); // Object.keys의 리턴값이 문자열 타입이기 때문
     if (numKey % 2 === 0) {
       ans.push(...d[numKey].reverse());
     } else {
