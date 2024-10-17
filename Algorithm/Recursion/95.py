@@ -4,7 +4,6 @@ n-th Catalan Number (C_n)
 The n-th Catalan number gives # of distinct binary search trees
 that can be formed with n unique values.
 So, time and space complexity of generating BSTs are both O(C_n)
-
 """
 
 
@@ -77,3 +76,58 @@ class Solution:
 
         # handle edge case for n == 0
         return generateTrees_recur(1, n) if n else []
+
+
+"""
+Dynamic Programming
+
+1. Initialization: create a DP table dp where dp[i] will store 
+all the unique BSTs with i nodes. Initialize dp[0] whith a single None
+value representing an empty tree.
+
+2. Iterate over # of nodes: for every number 'nodes' from 1 to n, iterate
+and construct all possible trees with 'nodes' number of nodes.
+
+3. Choose root: for every possible root value within the current 'nodes',
+iterate and use the root to build trees.
+
+4. Use previously computed subtrees: for the chosen root, use the previously
+computed dp[root - 1] for left subtrees and dp[nodes - root] for right subtrees
+
+5. Clone right subtree: since the right subtree's values will be affected by
+the choice of the root, clone the right subtree with an offset equal to
+the root value. The clone function handles this.
+
+6. Combine subtrees: create a new tree by combining the current root with
+the left and right subtrees. Append this tree to dp[nodes].
+
+7. Return result: finally return the trees stored in dp[n] 
+"""
+
+
+class Solution2:
+    def generateTrees(self, n: int):
+        if n == 0:
+            return []
+
+        # List Comprehension: 파이썬에서 리스트를 간결하고 효율적으로 생성하는 문법
+        # ['expression (리스트에 들어갈 요소)' for 'item (반복 변수)' in 'iterable' if 'condition']
+        dp = [[] for _ in range(n + 1)]  # n+1개의 빈 리스트를 요소로 가지는 리스트
+        dp[0].append(None)
+        for nodes in range(1, n + 1):
+            for root in range(1, nodes + 1):
+                for left_tree in dp[root - 1]:
+                    for right_tree in dp[nodes - root]:
+                        root_node = TreeNode(root)
+                        root_node.left = left_tree
+                        root_node.right = self.clone(right_tree, root)
+                        dp[nodes].append(root_node)
+        return dp[n]
+
+    def clone(self, n: TreeNode, offset: int):
+        if n:
+            node = TreeNode(n.val + offset)
+            node.lfet = self.clone(n.left, offset)
+            node.right = self.clone(n.right, offset)
+            return node
+        return None
