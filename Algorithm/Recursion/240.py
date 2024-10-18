@@ -1,14 +1,54 @@
 # Search a 2D Matrix 2
-
-
-# Recursion
+# Recursion - Decrease and Conquer
 class Solution:
-    def searchMatrix(self, mat, target):
-        pass
+    def searchMatrix(self, mat: List[List[int]], target: int):
+        height = len(mat)
+        width = len(mat[0])
+
+        def search(start_row, start_col):
+            if start_row >= height or start_col < 0:
+                return False
+            if mat[start_row][start_col] == target:
+                return True
+
+            if mat[start_row][start_col] > target:
+                return search(start_row, start_col - 1)
+            else:
+                return search(start_row + 1, start_col)
+
+        return search(0, width - 1)
+
+
+# Recursion - Divide and Conquer
+class Solution2:
+    def searchMatrix(self, mat: List[List[int]], target: int):
+        # [] 나 [[]]가 주어졌을 때
+        if not mat or not mat[0]:
+            return False
+
+        def search(left, up, right, down):
+            if left > right or up > down:
+                return False
+            # target이 서브 행렬에 존재할 수 없는 경우
+            if target < mat[up][left] or target > mat[down][right]:
+                return False
+
+            mid_col = (left + right) // 2
+            row = up
+            # 중간 열에서 target이 들어갈 수 있는 행을 찾음
+            while row <= down and mat[row][mid_col] <= target:
+                if mat[row][mid_col] == target:
+                    return True
+                row += 1
+            return (row <= down and search(left, row, mid_col - 1, down)) or (
+                row - 1 >= up and search(mid_col + 1, up, right, row - 1)
+            )
+
+        return search(0, 0, len(mat[0]) - 1, len(mat) - 1)
 
 
 # Iteration
-class Solution2:
+class Solution3:
     def searchMatrix(self, mat, target):
         height = len(mat)
         width = len(mat[0])
