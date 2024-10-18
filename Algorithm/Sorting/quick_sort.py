@@ -1,6 +1,6 @@
 # Ascending Order
 def quick_sort(arr, left=0, right=None):
-    if right is None:
+    if not right:
         right = len(arr) - 1
 
     if left < right:
