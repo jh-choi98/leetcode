@@ -26,22 +26,22 @@ class Solution2:
         if not mat or not mat[0]:
             return False
 
-        def search(left, up, right, down):
-            if left > right or up > down:
+        def search(left, top, right, bottom):
+            if left > right or top > bottom:
                 return False
             # target이 서브 행렬에 존재할 수 없는 경우
-            if target < mat[up][left] or target > mat[down][right]:
+            if target < mat[top][left] or target > mat[bottom][right]:
                 return False
 
             mid_col = (left + right) // 2
-            row = up
+            row = top
             # 중간 열에서 target이 들어갈 수 있는 행을 찾음
-            while row <= down and mat[row][mid_col] <= target:
+            while row <= bottom and mat[row][mid_col] <= target:
                 if mat[row][mid_col] == target:
                     return True
                 row += 1
-            return (row <= down and search(left, row, mid_col - 1, down)) or (
-                row - 1 >= up and search(mid_col + 1, up, right, row - 1)
+            return (row <= bottom and search(left, row, mid_col - 1, bottom)) or (
+                row - 1 >= top and search(mid_col + 1, top, right, row - 1)
             )
 
         return search(0, 0, len(mat[0]) - 1, len(mat) - 1)
