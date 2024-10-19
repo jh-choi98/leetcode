@@ -11,7 +11,7 @@ class Solution:
         triangle = []
 
         for row_num in range(numRows):
-            row = [None for _ in range(row_num + 1)]
+            row = [0 for _ in range(row_num + 1)]
             # 길이가 row_num + 1인 리스트를 생성하며, 그 리스트의 모든 요소는 None으로 초기화된다.
             row[0], row[-1] = 1, 1
 
@@ -24,7 +24,7 @@ class Solution:
 
 
 # Recursion
-class Solution:
+class Solution2:
     def generate(self, numRows):
         if numRows == 1:
             return [[1]]
