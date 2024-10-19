@@ -1,6 +1,7 @@
 # Climbing Stairs
 
 
+# DP - top-down
 # T: O(n)
 # S: O(n)
 class Solution:
