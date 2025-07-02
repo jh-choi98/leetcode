@@ -16,7 +16,7 @@ class Solution:
             else:
                 st.append(c)
 
-        return len(st) == 0
+        return not st
 
 class Solution2:
     def isValid(self, s: str) -> bool:
@@ -32,4 +32,4 @@ class Solution2:
             else:
                 stack.append(c)
                 
-        return len(stack) == 0
+        return not stack
