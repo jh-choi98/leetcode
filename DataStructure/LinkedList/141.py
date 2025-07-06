@@ -1,5 +1,5 @@
 # Linked List Cycle
-
+from typing import Optional
 
 class ListNode:
     def __init__(self, x):
@@ -18,7 +18,7 @@ class Solution1:
         p1 = head
         p2 = head
 
-        while p2 and p2.next:
+        while p1 and p2 and p2.next:
             p1 = p1.next
             p2 = p2.next.next
 
