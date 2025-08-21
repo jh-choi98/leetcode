@@ -138,6 +138,28 @@ def dfs_all_paths(graph, start, end, path=None):
     
     return paths
 
+def dfs_all_paths_optimized(graph, start, end):
+    all_paths = []  
+    path = []       
+    visited = set() 
+
+    def _dfs_util(node):
+        path.append(node)
+        visited.add(node)
+
+        if node == end:
+            all_paths.append(list(path))
+        else:
+            for neighbor in graph.get(node, []):
+                if neighbor not in visited:
+                    _dfs_util(neighbor) 
+
+        path.pop()
+        visited.remove(node)
+
+    _dfs_util(start)    
+    return all_paths
+
 
 # Example 5: DFS on Binary Tree
 class TreeNode:
