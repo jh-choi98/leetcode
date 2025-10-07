@@ -26,10 +26,10 @@ class Solution2:
             
             while i < len(s):
                 if s[i].isdigit():
-                    num = num * 10 + int(s[i])
+                    k = k * 10 + int(s[i])
                 elif s[i] == '[':
                     sub_str, i = helper(i + 1)
-                    decoded += num * sub_str
+                    decoded += k * sub_str
                 elif s[i] == ']':
                     return decoded, i
                 i += 1
