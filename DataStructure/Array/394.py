@@ -30,8 +30,11 @@ class Solution2:
                 elif s[i] == '[':
                     sub_str, i = helper(i + 1)
                     decoded += k * sub_str
+                    k = 0
                 elif s[i] == ']':
                     return decoded, i
+                else:
+                    decoded += s[i]
                 i += 1
                 
             return decoded, i
