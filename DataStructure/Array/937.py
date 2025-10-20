@@ -12,4 +12,3 @@ class Solution:
                 letterlogs.append(log)
         letterlogs = sorted(letterlogs, key=lambda x: (x.split(" ", 1)[1], x.split(" ", 1)[0]))
         return letterlogs + digitlogs
-
