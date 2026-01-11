@@ -315,3 +315,25 @@ def num_islands(grid: list[list[str]]) -> int:
                 count += 1
                 bfs(r, c)
     return count
+
+# ============================================================
+# 11. 2D 그리드 DFS
+# ============================================================
+def num_island(grid: list[list[str]]) -> int:
+    ROWS, COLS = len(grid), len(grid[0])
+    count = 0
+    
+    def dfs(r: int, c: int) -> None:
+        if (r < 0 or c < 0 or r >= ROWS or c >= COLS or grid[r][c] == "0"):
+            return
+        
+        grid[r][c] = "0"
+        for dr, dc in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
+            dfs(r + dr, c + dc)
+            
+    for r in range(ROWS):
+        for c in range(COLS):
+            if grid[r][c] == "1":
+                dfs(r, c)
+                count += 1
+    return count
