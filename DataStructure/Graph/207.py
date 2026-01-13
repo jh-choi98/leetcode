@@ -56,4 +56,3 @@ class Solution2:
             if not dfs(c):
                 return False
         return True
-            
