@@ -79,4 +79,3 @@ class Solution3:
                 r += 1
             
         return s[resIdx: resIdx + resLen]
-    
