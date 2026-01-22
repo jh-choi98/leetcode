@@ -7,7 +7,9 @@ class TreeNode:
         self.left = left
         self.right = right
         
-# dfs - recursive      
+# dfs - recursive
+# Time: O(n)      
+# Space: O(n)      
 class Solution:
     def maxDepth(self, root):
         if not root:
@@ -17,13 +19,17 @@ class Solution:
         return max(left, right)
     
 # dfs - recursive
+# Time: O(n)      
+# Space: O(n)
 class Solution2:
     def maxDepth(self, root):
         if not root:
             return 0
         return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
     
-# def - iterative
+# dfs - iterative
+# Time: O(n)      
+# Space: O(n)
 class Solution3:
     def maxDepth(self, root):
         stack = [[root, 1]]
@@ -37,9 +43,31 @@ class Solution3:
                 stack.append([node.left, depth + 1])
                 stack.append([node.right, depth + 1])
         return res
+
+# BFS
+# Time: O(n)
+# Space: O(n)
+class Solution4:
+    def maxDepth(self, root):
+        if not root:
+            return 0
+        
+        queue = deque([(root, 1)])
+        max_depth = 0
+
+        while queue:
+            node, depth = queue.popleft()
+            if node:
+                max_depth = max(depth, max_depth)
+                queue.append((node.left, depth + 1))
+                queue.append((node.right, depth + 1))
+        return max_depth
                 
 # bfs
-class Solution4:
+# 레벨 단위 처리 패턴
+# Time: O(n)
+# Space: O(n)
+class Solution5:
     def maxDepth(self, root):
         if not root:
             return 0
