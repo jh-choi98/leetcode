@@ -28,3 +28,15 @@ class Solution2:
             return self.lowestCommonAncestor(root.right, p, q)
         else:
             return root
+
+class Solution3:
+    def lowestCommonAncestor(self, root: TreeNode, p: TreeNode, q: TreeNode) -> Optional['TreeNode']:
+        cur = root
+        
+        while cur:
+            if p.val > cur.val and q.val > cur.val:
+                cur = cur.right
+            elif p.val < cur.val and q.val < cur.val:
+                cur = cur.left
+            else:
+                return cur
