@@ -5,7 +5,10 @@ class TreeNode:
         self.val = val
         self.left = left
         self.right = right
-        
+
+# Inorder Traversal
+# Time: O(h + k)
+# Space: O(h + k)  
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
         res = []
@@ -19,22 +22,42 @@ class Solution:
         dfs_inorder(root)
         return res[k - 1]
 
-class Soltuion2:
+# Recursive DFS (Optimal)
+# Time: O(h + k)
+# Space: O(h)
+class Solution2:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
-        n = 0
+        cnt = k
+        res = root.val
+        
+        def dfs(node):
+            nonlocal cnt, res
+            if not node:
+                return
+            
+            dfs(node.left)
+            cnt -= 1
+            if cnt == 0:
+                res = node.val
+                return
+            dfs(node.right)
+            
+        dfs(root)
+        return res
+
+# Iterative DFS (Optimal)
+class Solution3:
+    def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
         stack = []
         cur = root
         
-        while cur or stack:
+        while stack or cur:
             while cur:
                 stack.append(cur)
                 cur = cur.left
-                
             cur = stack.pop()
-            n += 1
-            if n == k:
+            k -= 1
+            if k == 0:
                 return cur.val
-            
             cur = cur.right
-            
         return 0
