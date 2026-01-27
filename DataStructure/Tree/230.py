@@ -46,6 +46,8 @@ class Solution2:
         return res
 
 # Iterative DFS (Optimal)
+# Time: O(h + k)
+# Space: O(h)
 class Solution3:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
         stack = []

@@ -6,7 +6,10 @@ class TreeNode:
         self.val = val
         self.left = left
         self.right = right
-        
+
+# DFS
+# Time: O(n^2)
+# Space: O(n)
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
         if not preorder or not inorder:
@@ -16,3 +19,4 @@ class Solution:
         root.left = self.buildTree(preorder[1:mid + 1], inorder[:mid])
         root.right = self.buildTree(preorder[mid + 1:], inorder[mid + 1:])
         return root
+
