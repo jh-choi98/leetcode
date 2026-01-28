@@ -48,3 +48,28 @@ class Solution2:
             return cache[node]
 
         return dfs(root)
+
+# DP (Optimal)
+# Time: O(n)
+# Space: O(n)
+"""
+Instead of caching all nodes, we can return two values from each
+subtree: 
+    the maximum if we rob this node, and the maximum if we skip it.
+This eliminates the need for a hash map.
+"""
+class Solution3:
+    def rob(self, root: Optional[TreeNode]) -> int:
+        def dfs(node):
+            if not node:
+                return [0, 0]
+            
+            left_pair = dfs(node.left)
+            right_pair = dfs(node.right)
+            
+            with_node = node.val + left_pair[1] + right_pair[1]
+            without_root = max(left_pair) + max(right_pair)
+            
+            return [with_node, without_root]
+        
+        return max(dfs(root))
