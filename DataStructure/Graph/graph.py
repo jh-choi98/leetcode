@@ -26,9 +26,9 @@
 
 BFS = 최단 거리, 레벨 순회 → deque + visited는 넣을 때 체크
 DFS = 모든 경로, 백트래킹 → stack 또는 재귀
-방향 그래프 사이클 = 3가지 상태 (미방문/방문중/완료)
-무방향 그래프 사이클 = parent 체크
-위상 정렬 = indegree 0인 것부터
+Directed Graph Cycle = 3가지 상태 (미방문/방문중/완료)
+Undirected Graph Cycle = parent 체크
+Topological Sort = indegree 0인 것부터
 그리드 = dr, dc = [(0,1), (0,-1), (1,0), (-1,0)]
 """
 
@@ -171,10 +171,10 @@ def count_components(n: int, edges: list[list[int]]) -> int:
             visited.add(node)
             while queue:
                 cur = queue.popleft()
-                for n in graph[cur]:
-                    if n not in visited:
-                        visited.add(n)
-                        queue.append(n)
+                for nei in graph[cur]:
+                    if nei not in visited:
+                        visited.add(nei)
+                        queue.append(nei)
     return count
 
 # ============================================================
@@ -190,11 +190,11 @@ def has_cycle_undirected(n: int, edges: list[list[int]]) -> bool:
     
     def dfs(node: int, parent: int) -> bool:
         visited.add(node)
-        for n in graph[node]:
-            if n not in visited:
-                if dfs(n, node):
+        for nei in graph[node]:
+            if nei not in visited:
+                if dfs(nei, node):
                     return True
-            elif n != parent: # 부모가 아닌데 이미 방문 = 사이클
+            elif nei != parent: # 부모가 아닌데 이미 방문 = 사이클
                 return True
         return False
     
@@ -218,10 +218,10 @@ def has_cycle_directed(n: int, edges: list[list[int]]) -> bool:
     
     def dfs(node: int) -> bool:
         state[node] = 1
-        for n in graph[node]:
-            if state[n] == 1: # 현재 경로에서 다시 만남 = 사이클
+        for nei in graph[node]:
+            if state[nei] == 1: # 현재 경로에서 다시 만남 = 사이클
                 return True
-            if state[n] == 0 and dfs(n):
+            if state[nei] == 0 and dfs(nei):
                 return True
         state[node] = 2
         return False
@@ -250,17 +250,17 @@ def topological_sort(n: int, edges: list[list[int]]) -> list[int]:
     while queue:
         node = queue.popleft()
         result.append(node)
-        for n in graph[node]:
-            indegree[n] -= 1
-            if indegree[n] == 0:
-                queue.append(n)
+        for nei in graph[node]:
+            indegree[nei] -= 1
+            if indegree[nei] == 0:
+                queue.append(nei)
                 
     return result if len(result) == n else []
 
 # ============================================================
 # 9. 이분 그래프 판별 (Bipartite Check)
 # ============================================================
-def is_bipartitie(n: int, edges: list[list[int]]) -> bool:
+def is_bipartite(n: int, edges: list[list[int]]) -> bool:
     graph = {i: [] for i in range(n)}
     for e1, e2 in edges:
         graph[e1].append(e2)
@@ -277,11 +277,11 @@ def is_bipartitie(n: int, edges: list[list[int]]) -> bool:
         
         while queue:
             node = queue.popleft()
-            for n in graph[node]:
-                if color[n] == -1:
-                    color[n] = 1 - color[node]
-                    queue.append(n)
-                elif color[n] == color[node]:
+            for nei in graph[node]:
+                if color[nei] == -1:
+                    color[nei] = 1 - color[node]
+                    queue.append(nei)
+                elif color[nei] == color[node]:
                     return False
     return True
         
