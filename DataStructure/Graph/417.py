@@ -141,3 +141,45 @@ class Solution3:
                 if pac[r][c] and atl[r][c]:
                     res.append([r, c])
         return res
+
+# BFS
+# Time: O(m * n)
+# Space: O(m * n)
+class Solution4:
+    def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
+        ROWS, COLS = len(heights), len(heights[0])
+        directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+        
+        pac_visited, atl_visited = set(), set()
+        
+        def bfs(starts, visited):
+            queue = deque(starts)
+            for r, c in starts:
+                visited.add((r, c))
+            
+            while queue:
+                r, c = queue.popleft()
+                for dr, dc in directions:
+                    nr, nc = r + dr, c + dc
+                    
+                    if (0 <= nr < ROWS and 0 <= nc < COLS and
+                        (nr, nc) not in visited and
+                        heights[nr][nc] >= heights[r][c]):
+                        visited.add((nr, nc))
+                        queue.append((nr, nc))
+                        
+        pac_starts = []
+        atl_starts = []
+        
+        for r in range(ROWS):
+            pac_starts.append((r, 0))
+            atl_starts.append((r, COLS - 1))
+        
+        for c in range(COLS):
+            pac_starts.append((0, c))
+            atl_starts.append((ROWS - 1, c))
+            
+        bfs(pac_starts, pac_visited)
+        bfs(atl_starts, atl_visited)
+        
+        return list(pac_visited & atl_visited)
