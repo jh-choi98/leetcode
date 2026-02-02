@@ -26,7 +26,7 @@ class Solution:
 
         return visited_count == numCourses
 
-# Cycle Detection (DFS)
+# Topological Sort (Cycle Detection (DFS))
 # Time: O(V + E)
 # Space: O(V + E)
 class Solution2:
@@ -34,6 +34,8 @@ class Solution2:
         graph = {i: [] for i in range(numCourses)}
         for course, pre in prerequisites:
             graph[course].append(pre)
+            # DFS는 그래프 역순
+            # DFS는 '이거 하려면 뭐 필요해?'(Requirement)를 묻기 때문
             
         visiting = set()
         
@@ -49,7 +51,7 @@ class Solution2:
                     return False
             
             visiting.remove(course)
-            graph[course] = []
+            graph[course] = [] # memoization
             return True
         
         for c in range(numCourses):
