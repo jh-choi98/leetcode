@@ -1,0 +1,5 @@
+How much gold you can steal?
+
+There are n houses build in a street, each of which contains some gold bars in it. A thief is going to steal the maximal bars for houses, but he can’t steal in two adjacent houses because if he does it will make create suspicion and he will be caught.
+
+What is the maximum stolen value?
