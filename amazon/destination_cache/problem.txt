@@ -1,0 +1,5 @@
+Amazon’s fulfillment centers process millions of package routing requests daily. To optimize the sorting system, the most frequently accessed package destinations are temporarily stored in memory. However, server memory is limited. Design and implement a data structure for a Least Recently Used (LRU) Cache to manage these package routes. It should support the following operations in O(1) average time complexity:
+
+- get(key): Retrieve the value of the key if it exists in the cache.
+- put(key, value): Insert or update the value of the key. If the cache
+reaches its capacity, it should invalidate the least recently used item.
