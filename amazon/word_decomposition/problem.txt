@@ -1,0 +1,27 @@
+Word Decomposition
+
+You are given a (potentially large) list of words.
+
+Some of these are compound words - the word can be broken down into parts and all parts of the word are also in the list.
+
+Identify all combinations where one word can be composed of two or more words of the same list, and print them.
+
+Example 1:
+    Sample input:
+        ["bar", "foobar", "foo",  "foobarzaa"]
+
+    Sample output:
+        "foobar": ["foo", "bar"]
+
+
+Example 2:
+    Sample input:
+        ["high", "super", "way", "superhighway", "highway", "rockstar", "rock", "star", "rocks", "tar", "stars", "rockstars"]
+
+    Sample output:
+        "superhighway": ["super", "high", "way"]
+        "superhighway": ["super", "highway"]
+        "highway": ["high", "way"]
+        "rockstar": ["rock", "star"]
+        "rockstar": ["rocks", "tar"]
+        "rockstars": ["rock", "stars"]
