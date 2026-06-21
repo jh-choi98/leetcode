@@ -1,0 +1,32 @@
+Write a function that gives the first common manager for 2 employees.
+You may design the data structure and APIs as you see fit.
+
+Examples:
+Michael and Timothy -> Ann
+Sofia and Isabel -> Jeff
+
+                Jeff
+                 +
+                 |
+       +---------+--------+--------+
+       |         |        |        |
+       +         +        +        +
+     Ann      Mathew   Jessica   George
+      +                           +
+      |                           |
+   +-------+                 +--------+
+   |       |                 |        |      
+   +       +                 +        +      
+Timothy  Sofia            Andrew    Isabel  
+	         +
+	         |
+	     +---+---+
+	     |       |
+	             +
+	         Michael
+
+Find the first common manager
+Input: two person's name, Two nodes are given.
+Output : the node of lowest manager.
+This question is similar to Leetcode 1650, but you need to design the data structure instead of having the definition of the tree node.
+
