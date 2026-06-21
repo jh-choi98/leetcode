@@ -1,0 +1,7 @@
+Design tic-tac-toe (the board is not guaranteed to be 3x3). Implement a
+win, tie function, and initialize the board. This question is left
+general as the interviewer wants to prompt the interviewee to ask
+clarifying questions.
+
+Follow-up: what optimization techniques can be done for the board. How
+do you deal with diagonals for even boards?
