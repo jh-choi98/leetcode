@@ -1,0 +1,11 @@
+An Amazon employee must complete a list of required courses. Each course can have a prerequisite course. Return whether or not it is possible for an employee to complete all of the courses.
+
+Example:
+
+The hashmap is structured as [course, prerequisite] Courses: { [Python Course, Systems Course], [Systems, Course, Python Course], [Low Level Course, Python Course] }
+
+This example above is impossible, there is no way for the student to
+complete all the courses because the Python and System courses are
+prerequisites of each other.
+
+Follow-up: Can you return one valid order to complete the courses?

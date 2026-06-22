@@ -3,7 +3,15 @@
 
 from collections import defaultdict, deque
 
-
+"""
+    Time: O(V + E)
+        We build the graph from the rates, and then in the worst case
+        BFS may explore the entire graph before finding the target
+        currency
+        
+    Space: O(V + E)
+        Mainly for storing the graph. The BFS queue and visited set add O(V), but the graph is the dominant part.
+"""
 def find_conversion_rate(rates: list[tuple[str, str, float]], from_currency, to_currency) -> float:
     """
         I'll model this as a graph. Each currency is a node, and each
