@@ -1,0 +1,6 @@
+Given an array of delivery times, output the median of all values seen so far after each new delivery time arrives.
+
+Example:
+
+Input: [5, 17, 100, 11]
+Output: [5, 11, 17, 14]
