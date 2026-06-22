@@ -1,0 +1,32 @@
+Given a grid of n * m, a robot starts at the left top corner and can move only right or down. Determine how many possible ways exist for this robot to reach the bottom right corner.
+
+Notes:
+
+Grid is filled with 0.
+There are no obstacles.
+No need to return the path or max/min path: just possible ways from the
+left top to the borrom right corner.
+
+Example:
+
+[0, 0]
+[0, 0]
+
+result = 2 
+/*
+1st way to reach the right bottom is to move right then down
+2nd way to reach the right bottom is to move down then right
+*/
+
+[0, 0]
+[0, 0]
+[0, 0]
+
+result = 3
+/*
+1st way to reach the right bottom is to move right - down - down
+2nd way to reach the right bottom is to move down - right - right
+3rd way to reach the right bottom is to move down - right - down
+*/
+
+Follow-up: obstacles가 있으면?
