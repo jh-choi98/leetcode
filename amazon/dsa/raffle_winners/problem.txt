@@ -1,0 +1,17 @@
+An e-conmerce platform wants to implement a promotional raffle system
+for a major sales event. Customers earn raffle entries based on their
+total spending during the promotional period. The probability of winning
+should be proportional to spending: a customer who spent $50 should have
+5x the chance of winning compared to someone who spent $10. Write a
+function that takes a list of transactions (customer_id, amount) and
+returns K unique winners.
+
+
+
+An e-conmerce platform wants to implement a promotional raffle system
+for a major sales event. Customers earn raffle entries based on their
+total spending during the promotional period. The probability of winning
+should be proportional to spending: a customer who spent $50 should have
+5x the chance of winning compared to someone who spent $10. Write a
+function that takes a list of transactions (customer_id, amount) and
+returns K unique winners.
