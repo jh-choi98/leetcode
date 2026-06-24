@@ -1,0 +1,6 @@
+Amazon has to process numerous critical business intelligence jobs a day. Most of those tend to be very computationally heavy in nature such that they require a single virtual machine while they run and need to be guaranteed to run between certain times.
+
+Given a set of jobs we need to know how many virtual machines we will
+need to provision? That is, given a set of jobs with start and end times
+like {(6,8), (2,5), (3,7)}, calculate the number of virtual machines
+required to execute all those jobs?
