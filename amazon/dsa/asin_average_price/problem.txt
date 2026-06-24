@@ -1,0 +1,24 @@
+Assuming there is a data set that contains UPC, Date and Price. Knowing many UPCs may map to a single ASIN, calculate the average price per ASIN per month.
+
+Clarification with the interviewer:
+
+// UPC means: ID string
+// Date means: time
+// ASIN means: Amazon Standard Identification Number. It’s a unique
+10-character alphanumeric code assigned to every product listed in the Amazon store.
+// UPCs => ASIN many to one
+// One ASIN can have many UPCs associated, each UPC has a price.
+// Per month added
+
+One UPC contains information like this: this can be an array of UPCs given to us.
+
+UPC Date Price
+// UPC1, 10/12/10, $1
+// UPC1, 10/13/10, $2
+// UPC1, 10/13/10, $1
+// UPC2342, 10/13/10, $7
+
+UPCs can map to different ASINs as below: this can be a map given to us showing the relation between UPC and ASIN.
+
+// UPC1 -> ASIN1
+// UPC2342 -> ASIN2
