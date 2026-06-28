@@ -1,0 +1,7 @@
+Design an employee directory for a company
+- Employee: Developer or Manager
+- Each employee must have a manager to report to
+
+Implement below methods for the Directory
+- Insert / Delete an employee
+- calculate avg working years for employees under a given employee
