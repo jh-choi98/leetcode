@@ -1,0 +1,11 @@
+Implement a class for applying discounts to shopping cart/order following OOP principles.
+Suppose various kinds of discounts available:
+
+1. list item fixed user's discount (for example, I'd like to give 10% discount to my favourite customer)
+2. discount for number of items (for example, you're buying 10 different colored pens and you'll be getting discount of 1.5%)
+3. discount for coupon (for example, during promo action we've produced 100 coupons with 10% discount each. Coupons work only for one order and expire on yyyy-mm-dd)
+4. present for purchasing item or group of items (for example, you're buying pen, list of paper and shop presents a sharpener to you)
+5. discount for total order price (for example, you're buying 10 pens and gettin no discount, then you're adding 5 more pens and getting 5% discount)
+
+Only one discount could be applied to specific item. We're always
+applying biggest discount. Find the best discount for user.
