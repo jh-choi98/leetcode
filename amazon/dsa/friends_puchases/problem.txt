@@ -1,0 +1,12 @@
+Amazon is releasing a new feature called "Stuff Your Friends Are Buying." This feature aims to list a set of products that you have not already purchased, chosen from the items your friends have bought. The list should be ordered from most bought to least bought.
+
+To facilitate this, we have access to the following two APIs:
+- getPurchases(person): Returns a list of purchases made by the given person. If a product was purchased multiple times, it will appear multiple times in this list.
+- getFriends(person): Returns a list of friends of the given person.
+
+Task: Complete the function itemsFriendsPurchases(person) that takes a person (user ID) as input and returns a list of products that person's friends are buying, adhering to the following rules:
+
+1. Products must not have been already purchased by the input person.
+2. Products should be ordered from most frequently purchased by friends to least frequently purchased by friends.
+3. If no friends are found, or friends have no relevant purchases,
+return an empty list.
