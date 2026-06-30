@@ -22,5 +22,5 @@ Follow-up 1
 You cannot alter the pointers i.e., no reversing the linked list
 
 Follow-up 2
-Along with the constraint in Follow-up 1, the linked list size can now be up to 10^8. So you must achieve the solution with constant O(1) space
-
+Along with the constraint in Follow-up 1, the linked list size can now
+be up to 10^8. So you must achieve the solution with constant O(1) space

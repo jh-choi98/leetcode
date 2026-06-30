@@ -1,0 +1,8 @@
+A website is planning to run a campaign to attract their registered
+users to come back to visit their website. The campaign planner wants to
+offer their non returning users some promotions via email to get their
+attention again. The website has up to date login logs for all
+registered user whenever a user signed in. They estimated there are
+around 2 million registered users and 80% of them have NOT been visited
+their website after registered. Please write a function to return the
+oldest 20,000 customers who visited the website only once.
