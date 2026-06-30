@@ -1,0 +1,10 @@
+We are in charge of designing a system to install packages. We are required to support the installation of a package and all of its dependent packages. Define what a package looks like and code a solution to this problem.
+
+Clarification with the interviewer:
+    1. If A depends on B, B depends on C and D has no dependencies, return the order of installation [D, C, B, A].
+    2. We can indicate a package with string, the dependency package with string as well.
+    3. Find All packages to install, and build up the relationship between them.
+    4. We can define some existing functions to return all dependent packages to install for a certain package.
+    5. Get the adjacency list to indicate the relationship between packages.
+    6. This is a question about topological sort. The key is to detect the cycle dependencies.
+    7. The input can be one package, or even a list of packages.
