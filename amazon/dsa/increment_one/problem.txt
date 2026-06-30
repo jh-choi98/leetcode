@@ -1,0 +1,26 @@
+Given a linked list of size with values being integers between 0-9, increment the number formed by the linked list by one.
+
+Example 1
+Input: 1->2->3->4 Output: 1->2->3->5
+
+Explanation
+1234 + 1 = 1235
+
+Example 2
+Input: 1->2->3->9 Output: 1->2->4->0
+
+Explanation
+1249 + 1 = 1250
+
+Example 2
+Input: 9->9->9->9 Output: 1->0->0->0->0
+
+Explanation
+9999 + 1 = 10000
+
+Follow-up 1
+You cannot alter the pointers i.e., no reversing the linked list
+
+Follow-up 2
+Along with the constraint in Follow-up 1, the linked list size can now be up to 10^8. So you must achieve the solution with constant O(1) space
+
