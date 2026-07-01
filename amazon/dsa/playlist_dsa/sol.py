@@ -61,7 +61,8 @@ class Playlist:
             node = node.next
         
         print(list_of_songs)
-        
+     
+    # Time O(n), Space O(n)   
     def shuffle(self):
         if self.length <= 1:
             return
