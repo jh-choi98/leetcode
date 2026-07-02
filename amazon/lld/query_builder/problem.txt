@@ -1,0 +1,5 @@
+We need a library for finding files that match a condition. For now we
+have only two conditions ­ "the filename contains " and "the file
+extension is ". In the future we will want to support more. Conditions
+can be combined in a query. For example, "filename contains foo &&
+(extension = png || extension = jpg)".
